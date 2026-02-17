@@ -1,0 +1,25 @@
+# PostgreSQL data
+docker/postgres/data/
+
+# Sqitch
+*.bak
+
+# Python (SQLFluff)
+__pycache__/
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Claude Code (sesiones efímeras)
+.claude/plans/
+.claude/memory/

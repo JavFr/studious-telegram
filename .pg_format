@@ -1,0 +1,9 @@
+keyword-case=2
+type-case=2
+function-case=0
+spaces=4
+tabs=0
+comma=end
+wrap-limit=120
+nogrouping=0
+nocomment=0

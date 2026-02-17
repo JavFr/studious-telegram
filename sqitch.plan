@@ -1,0 +1,16 @@
+%syntax-version=1.0.0
+%project=fontanella
+
+extensions 2026-02-15T00:00:00Z Franco <franco@fontanella> # Extensiones requeridas: btree_gist
+users [extensions] 2026-02-15T00:00:01Z Franco <franco@fontanella> # Tabla de usuarios (autenticacion)
+organizations [extensions] 2026-02-15T00:00:02Z Franco <franco@fontanella> # Tabla de organizaciones (estudios juridicos)
+organization_members [users organizations] 2026-02-15T00:00:03Z Franco <franco@fontanella> # Membresia y roles por organizacion
+lawyers [users] 2026-02-15T00:00:04Z Franco <franco@fontanella> # Perfil profesional de abogados
+client_profiles [users organizations] 2026-02-15T00:00:05Z Franco <franco@fontanella> # Perfil de cliente por organizacion
+appointment_types [organizations] 2026-02-15T00:00:06Z Franco <franco@fontanella> # Tipos de cita por organizacion
+lawyer_appointment_types [lawyers appointment_types] 2026-02-15T00:00:07Z Franco <franco@fontanella> # Tipos de cita que ofrece cada abogado
+availability_rules [lawyers organizations] 2026-02-15T00:00:08Z Franco <franco@fontanella> # Reglas de disponibilidad semanal
+availability_overrides [lawyers organizations] 2026-02-15T00:00:09Z Franco <franco@fontanella> # Excepciones puntuales de disponibilidad
+appointments [organizations lawyers client_profiles appointment_types] 2026-02-15T00:00:10Z Franco <franco@fontanella> # Citas con exclusion constraint anti-solapamiento
+
+@v0.1.0 2026-02-16T00:00:00Z Franco <franco@fontanella> # Esquema inicial: modelo de citas legales
