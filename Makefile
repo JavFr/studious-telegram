@@ -62,6 +62,35 @@ test:                  ## Ejecutar tests pgTAP
 		bash -c 'pg_prove -U fontanella -d fontanella_dev /tmp/pgtap/*.sql'
 
 # ============================================
+# Seed data
+# ============================================
+
+CONTAINER := fontanella-postgres
+
+.PHONY: seed seed-volume seed-all seed-reset
+
+seed:                  ## Cargar datos base determinísticos
+	docker cp seed/seed.sql $(CONTAINER):/tmp/seed.sql
+	docker compose -f $(COMPOSE_FILE) exec -T postgres \
+		psql -U fontanella -d fontanella_dev -f /tmp/seed.sql
+
+seed-volume:           ## Generar volumen de datos (requiere seed)
+	docker cp seed/seed_volume.sql $(CONTAINER):/tmp/seed_volume.sql
+	docker compose -f $(COMPOSE_FILE) exec -T postgres \
+		psql -U fontanella -d fontanella_dev -f /tmp/seed_volume.sql
+
+seed-all: seed seed-volume  ## Cargar datos base + volumen
+
+seed-reset:            ## Resetear datos y re-sembrar (DESTRUCTIVO)
+	docker compose -f $(COMPOSE_FILE) exec -T postgres \
+		psql -U fontanella -d fontanella_dev -c \
+		"TRUNCATE appointments, availability_overrides, availability_rules, \
+		lawyer_appointment_types, appointment_types, client_profiles, \
+		lawyers, organization_members, organizations, users \
+		RESTART IDENTITY CASCADE;"
+	$(MAKE) seed-all
+
+# ============================================
 # Calidad SQL
 # ============================================
 
