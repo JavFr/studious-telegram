@@ -131,8 +131,8 @@ BEGIN
             VALUES (v_user_id, v_org_id, 'lawyer');
 
             -- Perfil de abogado
-            INSERT INTO lawyers (user_id, specialty)
-            VALUES (v_user_id, 'General')
+            INSERT INTO lawyers (user_id, first_name, last_name, specialty)
+            VALUES (v_user_id, 'Abogado', 'Gen-' || v_org_id || '-' || j, 'General')
             RETURNING id INTO v_lawyer_id;
 
             -- Vincular a todos los tipos de cita de esta org

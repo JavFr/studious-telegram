@@ -1,11 +1,9 @@
--- Deploy fontanella:lawyers to pg
+-- Deploy fontanella:lawyers to pg (rework: agregar first_name y last_name)
 BEGIN;
-CREATE TABLE lawyers (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id BIGINT NOT NULL UNIQUE REFERENCES users (id),
-    license_number TEXT,
-    specialty TEXT,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
-);
+ALTER TABLE lawyers
+    ADD COLUMN first_name TEXT NOT NULL DEFAULT '',
+    ADD COLUMN last_name TEXT NOT NULL DEFAULT '';
+ALTER TABLE lawyers
+    ALTER COLUMN first_name DROP DEFAULT,
+    ALTER COLUMN last_name DROP DEFAULT;
 COMMIT;

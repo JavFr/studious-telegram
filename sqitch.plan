@@ -14,3 +14,8 @@ availability_overrides [lawyers organizations] 2026-02-15T00:00:09Z Franco <fran
 appointments [organizations lawyers client_profiles appointment_types] 2026-02-15T00:00:10Z Franco <franco@fontanella> # Citas con exclusion constraint anti-solapamiento
 
 @v0.1.0 2026-02-16T00:00:00Z Franco <franco@fontanella> # Esquema inicial: modelo de citas legales
+lawyers [lawyers@v0.1.0] 2026-02-18T12:15:03Z Javier Brustolon <javf@boxred.net> # Agregar first_name y last_name al perfil de abogado
+appointments [appointments@v0.1.0] 2026-02-18T12:18:00Z Javier Brustolon <javf@boxred.net> # Excluir citas canceladas del exclusion constraint
+vw_upcoming_client_appointments [appointments lawyers appointment_types organizations] 2026-02-18T12:19:06Z Javier Brustolon <javf@boxred.net> # Vista de proximas citas para clientes con datos enriquecidos
+vw_upcoming_lawyer_appointments [appointments lawyers client_profiles appointment_types organizations] 2026-02-18T12:19:10Z Javier Brustolon <javf@boxred.net> # Vista de proximas citas para abogados con datos enriquecidos
+@v0.2.0 2026-02-18T23:05:58Z Javier Brustolon <javf@boxred.net> # Reworks de esquema y vistas de citas

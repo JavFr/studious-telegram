@@ -86,14 +86,14 @@ VALUES
 -- 4. Abogados (perfil profesional global)
 -- ============================================
 
-INSERT INTO lawyers (id, user_id, license_number, specialty)
+INSERT INTO lawyers (id, user_id, first_name, last_name, license_number, specialty)
 OVERRIDING SYSTEM VALUE
 VALUES
-    (1, 3, 'CPACF-1042',    'Derecho de Familia y Sucesiones'),
-    (2, 4, 'CPACF-2203',    'Derecho Laboral'),
-    (3, 5, 'BARRA-MX-3317', 'Derecho Corporativo'),
-    (4, 6, 'BARRA-MX-4481', 'Derecho Penal'),
-    (5, 7, 'ICAM-5590',     'Derecho Civil');
+    (1, 3, 'Rodrigo', 'García',    'CPACF-1042',    'Derecho de Familia y Sucesiones'),
+    (2, 4, 'Marta',   'López',     'CPACF-2203',    'Derecho Laboral'),
+    (3, 5, 'Diego',   'Morales',   'BARRA-MX-3317', 'Derecho Corporativo'),
+    (4, 6, 'Ana',     'Reyes',     'BARRA-MX-4481', 'Derecho Penal'),
+    (5, 7, 'Carlos',  'Fernández', 'ICAM-5590',     'Derecho Civil');
 
 -- ============================================
 -- 5. Perfiles de clientes (por organización)

@@ -1,4 +1,6 @@
--- Revert fontanella:lawyers from pg
+-- Revert fontanella:lawyers from pg (rework: quitar first_name y last_name)
 BEGIN;
-DROP TABLE IF EXISTS lawyers;
+ALTER TABLE lawyers
+    DROP COLUMN first_name,
+    DROP COLUMN last_name;
 COMMIT;

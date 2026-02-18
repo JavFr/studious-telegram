@@ -16,24 +16,14 @@ FROM
 WHERE
     FALSE;
 
--- Verificar exclusion constraint con nombre explicito
+-- Verificar exclusion constraint
 SELECT
     1 / COUNT(*)
 FROM
     pg_constraint
 WHERE
-    conname = 'excl_appointments_no_overlap'
+    conrelid = 'appointments'::REGCLASS
     AND contype = 'x';
-
--- Verificar que es un constraint parcial (tiene condicion WHERE)
-SELECT
-    1 / COUNT(*)
-FROM
-    pg_constraint
-WHERE
-    conname = 'excl_appointments_no_overlap'
-    AND pg_get_constraintdef(oid)
-    LIKE '%WHERE%';
 
 -- Verificar indice de busqueda
 SELECT
